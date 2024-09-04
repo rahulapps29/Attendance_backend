@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta desc="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- favicon -->
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <!-- font awesome -->
@@ -15,35 +15,33 @@
     <link rel="stylesheet" href="./normalize.css" />
     <!-- main css -->
     <link rel="stylesheet" href="./main.css" />
-    <title>Entry Sheet</title>
+    <title>Attendance Sheet</title>
   </head>
   <body>
     <form class="task-form">
-      <h4>Entry Sheet</h4>
+      <h4>Attendance Sheet</h4>
 
       <div class="form-control">
         <input
           type="text"
-          name="transtype"
-          class="task-person"
-          placeholder="Trans type eg: gave to person"
+          name="emp_id"
+          class="task-emp_id"
+          placeholder="Employee ID"
         />
+      </div>
+      <div class="form-control">
+        <input type="text" name="name" class="task-input" placeholder="Name" />
         <!-- <button type="submit" class="btn submit-btn">submit</button> -->
       </div>
       <div class="form-control">
         <input
           type="text"
-          name="desc"
-          class="task-input"
-          placeholder="trans Desc eg: cardname"
+          name="location"
+          class="task-location"
+          placeholder="Location"
         />
-        <!-- <button type="submit" class="btn submit-btn">submit</button> -->
       </div>
 
-      <div class="form-control">
-        <input type="number" name="amt" class="task-amt" placeholder="Amt" />
-        <!-- <button type="submit" class="btn submit-btn">submit</button> -->
-      </div>
       <div class="form-control">
         <input type="date" name="tdate" class="task-date" placeholder="date" />
         <!-- <button type="submit" class="btn submit-btn">submit</button> -->

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta desc="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- favicon -->
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
     <!-- normalize -->
@@ -22,22 +22,28 @@
           <p class="task-edit-id"></p>
         </div>
         <div class="form-control">
-          <label for="ttype">ttype</label>
+          <label for="emp_id">emp_id</label>
           <input
-            id="ttype"
+            id="emp_id"
             type="text"
-            name="transtype"
-            class="task-edit-person"
+            name="emp_id"
+            class="task-edit-emp_id"
           />
         </div>
         <div class="form-control">
-          <label for="desc">Desc</label>
-          <input id="desc" type="text" name="desc" class="task-edit-desc" />
+          <label for="name">name</label>
+          <input id="name" type="text" name="name" class="task-edit-name" />
         </div>
         <div class="form-control">
-          <label for="amt">Amount</label>
-          <input id="amt" type="number" name="amt" class="task-edit-amt" />
+          <label for="location">location</label>
+          <input
+            id="location"
+            type="text"
+            name="location"
+            class="task-edit-location"
+          />
         </div>
+
         <div class="form-control">
           <label for="date">Date</label>
           <input id="date" type="date" name="tdate" class="task-edit-date" />
@@ -47,7 +53,7 @@
           <input
             id="completed"
             type="checkbox"
-            desc="completed"
+            name="completed"
             class="task-edit-completed"
           />
         </div>

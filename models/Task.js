@@ -1,47 +1,38 @@
 const mongoose = require("mongoose");
 
 const TaskSchema = new mongoose.Schema({
-  // person: {
-  //   type: String,
-  //   enum: {
-  //     values: ["Rovin", "Anju", "Aman", "Rupesh"],
-  //     // message: "{VALUE} is not supported",
-  //   },
-  // },
   tdate: {
     type: Date,
     required: [true, "must provide date"],
     default: Date.now,
   },
-  desc: {
+  name: {
     type: String,
-    required: [true, "must provide desc"],
+    required: [true, "must provide name"],
     trim: true,
-    maxlength: [200, "desc can not be more than 200 characters"],
+    maxlength: [200, "name can not be more than 200 characters"],
   },
 
   completed: {
     type: Boolean,
     default: false,
   },
-  amt: { type: Number },
   year: { type: Number },
   month: { type: Number },
   year_month: { type: String },
   date_string: { type: String },
-  transtype: {
+  location: {
     type: String,
-    required: [true, "must provide transtype"],
+    required: [true, "must provide location"],
     trim: true,
-    maxlength: [200, "transtype can not be more than 200 characters"],
+    maxlength: [200, "location can not be more than 200 characters"],
   },
-  // transtype: {
-  //   type: String,
-  //   enum: {
-  //     values: ["Given", "Received", "bankstatement"],
-  //     // message: "{VALUE} is not supported",
-  //   },
-  // },
+  emp_id: {
+    type: String,
+    required: [true, "must provide location"],
+    trim: true,
+    maxlength: [200, "location can not be more than 200 characters"],
+  },
 });
 
 module.exports = mongoose.model("Task", TaskSchema);

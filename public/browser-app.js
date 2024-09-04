@@ -2,11 +2,11 @@ const tasksDOM = document.querySelector(".tasks");
 const loadingDOM = document.querySelector(".loading-text");
 const formDOM = document.querySelector(".task-form");
 const taskInputDOM = document.querySelector(".task-input");
-const taskInputAmt = document.querySelector(".task-amt");
+
 const taskInputDate = document.querySelector(".task-date");
-const taskInputPerson = document.querySelector(".task-person");
-// const taskInpuTtype = document.querySelector(".task-ttype");
-// Load tasks from /api/tasks
+const taskInputlocation = document.querySelector(".task-location");
+const taskInputemp_id = document.querySelector(".task-emp_id");
+
 const showTasks = async () => {
   loadingDOM.style.visibility = "visible";
   try {
@@ -20,12 +20,12 @@ const showTasks = async () => {
     }
     const allTasks = tasks
       .map((task) => {
-        const { completed, _id: taskID, desc, tdate, amt, transtype } = task;
+        const { completed, _id: taskID, name, tdate, location, emp_id } = task;
         return `<div class="single-task ${completed && "task-completed"}">
 <h5><span><i class="far fa-check-circle"></i></span>${tdate.substring(
           0,
           10
-        )} : ${transtype} : ${desc} : ${amt}</h5>
+        )}:${name}:${emp_id}:${location.toLowerCase()}</h5>
 <div class="task-links">
 
 
@@ -60,8 +60,20 @@ tasksDOM.addEventListener("click", async (e) => {
     loadingDOM.style.visibility = "visible";
     const id = el.parentElement.dataset.id;
     try {
-      await axios.delete(`/api/tasks/${id}`);
-      showTasks();
+      const userConfirmed = confirm(
+        "Are you sure you want to delete this transaction?"
+      );
+      if (!userConfirmed) {
+        // If the user cancels, prevent the delete action
+
+        alert("Deletion canceled");
+      } else {
+        // Proceed with the deletion
+        await axios.delete(`/api/tasks/${id}`);
+        showTasks();
+        alert("Item deleted successfully");
+        // You can add your deletion logic here
+      }
     } catch (error) {
       console.log(error);
     }
@@ -73,10 +85,11 @@ tasksDOM.addEventListener("click", async (e) => {
 
 formDOM.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const desc = taskInputDOM.value;
-  const amt = taskInputAmt.value;
+  const name = taskInputDOM.value.toLowerCase();
+
   const tdate = taskInputDate.value;
-  const transtype = taskInputPerson.value;
+  const location = taskInputlocation.value.toLowerCase();
+  const emp_id = taskInputemp_id.value.toLowerCase();
   const year = Number(tdate.substring(0, 4));
   const month = Number(tdate.substring(5, 7));
   const year_month = tdate.substring(5, 7) + "_" + tdate.substring(0, 4);
@@ -86,25 +99,26 @@ formDOM.addEventListener("submit", async (e) => {
     tdate.substring(5, 7) +
     "_" +
     tdate.substring(0, 4);
-  const person = taskInputPerson.value;
-  // const transtype = taskInputPerson.value;
+
   try {
     await axios.post("/api/tasks", {
-      desc,
+      name,
       tdate,
-      amt,
+
       year,
       month,
-      transtype,
+      location,
+      emp_id,
       year_month,
       date_string,
     });
     showTasks();
     taskInputDOM.value = "";
-    taskInputAmt.value = "";
+
     taskInputDate.value = "";
-    taskInputPerson.value = "";
-    // taskInputPerson.value = "";
+    taskInputlocation.value = "";
+    taskInputemp_id.value = "";
+    // taskInputlocation.value = "";
     formAlertDOM.style.display = "block";
     formAlertDOM.textContent = `success, task added`;
     formAlertDOM.classList.add("text-success");
