@@ -13,12 +13,12 @@ const getAlldynamicIn = async (req, res) => {
   const {
     completed,
     company,
-    desc,
+    name,
     year_month,
     sort,
     fields,
     numericFilters,
-    transtype,
+    location,
   } = req.query;
   const queryObject = {};
 
@@ -34,12 +34,12 @@ const getAlldynamicIn = async (req, res) => {
     queryObject.year_month = { $regex: year_month, $options: "i" };
   }
 
-  if (desc) {
-    queryObject.desc = { $regex: desc, $options: "i" };
+  if (name) {
+    queryObject.name = { $regex: name, $options: "i" };
   }
 
-  if (transtype) {
-    queryObject.transtype = { $regex: transtype, $options: "i" };
+  if (location) {
+    queryObject.location = { $regex: location, $options: "i" };
   }
 
   if (numericFilters) {

@@ -29,7 +29,7 @@ const TaskSchema = new mongoose.Schema({
   },
   emp_id: {
     type: String,
-    required: [true, "must provide location"],
+    required: [false, "must provide location"],
     trim: true,
     maxlength: [200, "location can not be more than 200 characters"],
   },
